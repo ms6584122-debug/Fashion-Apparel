@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AURA | Contemporary Fashion & Luxury Living</title>
+  <meta name="description" content="Discover AURA's curated collections for Men, Women, and Kids. Premium apparel and handcrafted accessories built with sustainable luxury." />
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="announcement-bar">
+    <div class="announcement-content">
+      <span>✨ COMPLIMENTARY EXPRESS SHIPPING ON ORDERS OVER $150</span>
+      <span class="divider">•</span>
+      <span>USE CODE <strong class="code-highlight">AURA15</strong> FOR 15% OFF YOUR FIRST PURCHASE</span>
+      <span class="divider">•</span>
+      <span>30-DAY HASSLE-FREE RETURNS</span>
+    </div>
+  </div>
+
+  <!-- Header / Navigation -->
+  <header class="site-header" id="site-header">
+    <div class="container header-container">
+      <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle navigation menu">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <a href="#" class="brand-logo">
+        <span class="logo-text">AURA</span>
+        <span class="logo-sub">STUDIO</span>
+      </a>
+
+      <nav class="main-nav" id="main-nav">
+        <div class="mobile-nav-header">
+          <span class="brand-logo"><span class="logo-text">AURA</span></span>
+          <button class="close-menu-btn" id="close-menu-btn" aria-label="Close menu">&times;</button>
+        </div>
+        <ul class="nav-list">
+          <li><a href="#hero" class="nav-link active">Home</a></li>
+          <li class="dropdown-link">
+            <a href="#categories" class="nav-link">Collections</a>
+            <div class="mega-dropdown">
+              <div class="mega-column">
+                <h4>Men</h4>
+                <a href="#products" onclick="filterCategory('men', 'clothing')">Clothing</a>
+                <a href="#products" onclick="filterCategory('men', 'accessories')">Accessories</a>
+                <a href="#products" onclick="filterCategory('men', 'all')">View All Men</a>
+              </div>
+              <div class="mega-column">
+                <h4>Women</h4>
+                <a href="#products" onclick="filterCategory('women', 'clothing')">Clothing</a>
+                <a href="#products" onclick="filterCategory('women', 'accessories')">Accessories</a>
+                <a href="#products" onclick="filterCategory('women', 'all')">View All Women</a>
+              </div>
+              <div class="mega-column">
+                <h4>Kids</h4>
+                <a href="#products" onclick="filterCategory('kids', 'clothing')">Clothing</a>
+                <a href="#products" onclick="filterCategory('kids', 'accessories')">Accessories</a>
+                <a href="#products" onclick="filterCategory('kids', 'all')">View All Kids</a>
+              </div>
+            </div>
+          </li>
+          <li><a href="#categories" class="nav-link">Categories</a></li>
+          <li><a href="#products" class="nav-link">Shop</a></li>
+          <li><a href="#about" class="nav-link">Our Story</a></li>
+          <li><a href="#reviews" class="nav-link">Reviews</a></li>
+          <li><a href="#newsletter" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="action-btn" id="search-toggle-btn" title="Search catalog" aria-label="Search catalog">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+
+        <button class="action-btn" id="wishlist-toggle-btn" title="Saved Wishlist" aria-label="Wishlist">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+          <span class="badge" id="wishlist-badge">0</span>
+        </button>
+
+        <button class="action-btn cart-btn" id="cart-toggle-btn" title="Shopping Cart" aria-label="Shopping Cart">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="badge" id="cart-badge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Backdrop Overlay -->
+  <div class="backdrop" id="mobile-backdrop"></div>
+
+  <!-- Search Modal Overlay -->
+  <div class="search-overlay" id="search-overlay">
+    <div class="search-modal-container">
+      <div class="search-header">
+        <div class="search-input-wrapper">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="search-input" placeholder="Search clothes, accessories, coats, shoes..." autocomplete="off" />
+          <button id="clear-search-btn" class="clear-search-btn">&times;</button>
+        </div>
+        <button id="close-search-btn" class="btn-text">Cancel</button>
+      </div>
+
+      <div class="search-quick-tags">
+        <span>Popular:</span>
+        <button class="tag-btn" onclick="quickSearch('Trench Coat')">Trench Coat</button>
+        <button class="tag-btn" onclick="quickSearch('Cashmere')">Cashmere</button>
+        <button class="tag-btn" onclick="quickSearch('Leather')">Leather Bag</button>
+        <button class="tag-btn" onclick="quickSearch('Watch')">Watch</button>
+        <button class="tag-btn" onclick="quickSearch('Kids')">Kids Hoodie</button>
+      </div>
+
+      <div class="search-results-grid" id="search-results-grid">
+        <!-- Dynamically injected search results -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Shopping Cart Slide-out Drawer -->
+  <div class="drawer-overlay" id="cart-overlay"></div>
+  <aside class="cart-drawer" id="cart-drawer" aria-label="Shopping Cart Drawer">
+    <div class="drawer-header">
+      <div class="drawer-title">
+        <h3>Shopping Bag</h3>
+        <span id="cart-count-summary">(0 items)</span>
+      </div>
+      <button class="close-drawer-btn" id="close-cart-btn" aria-label="Close cart">&times;</button>
+    </div>
+
+    <!-- Free Shipping Progress Bar -->
+    <div class="free-shipping-tracker">
+      <div class="shipping-msg" id="shipping-msg">Add $150.00 to unlock FREE Express Delivery!</div>
+      <div class="shipping-progress-bg">
+        <div class="shipping-progress-fill" id="shipping-progress-fill" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <div class="drawer-body" id="cart-items-container">
+      <!-- Empty state / items loaded via JS -->
+    </div>
+
+    <div class="drawer-footer">
+      <div class="promo-code-wrapper">
+        <input type="text" id="promo-input" placeholder="Promo code (Try: AURA15)" />
+        <button id="apply-promo-btn" class="btn-secondary">Apply</button>
+      </div>
+      <div id="promo-message" class="promo-message"></div>
+
+      <div class="cart-summary-lines">
+        <div class="summary-line">
+          <span>Subtotal</span>
+          <span id="cart-subtotal">$0.00</span>
+        </div>
+        <div class="summary-line" id="discount-line" style="display: none;">
+          <span>Discount (15%)</span>
+          <span id="cart-discount">-$0.00</span>
+        </div>
+        <div class="summary-line">
+          <span>Estimated Shipping</span>
+          <span id="cart-shipping">Calculated at checkout</span>
+        </div>
+        <div class="summary-line total-line">
+          <span>Total</span>
+          <span id="cart-total">$0.00</span>
+        </div>
+      </div>
+
+      <button class="btn-primary btn-block checkout-trigger-btn" id="checkout-btn">
+        Proceed to Checkout
+      </button>
+
+      <div class="trust-features">
+        <span>🔒 Secure SSL 256-Bit Checkout</span>
+        <span>•</span>
+        <span>⚡ Instant Order Confirmation</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Wishlist Slide-out Drawer -->
+  <div class="drawer-overlay" id="wishlist-overlay"></div>
+  <aside class="cart-drawer wishlist-drawer" id="wishlist-drawer" aria-label="Wishlist Drawer">
+    <div class="drawer-header">
+      <div class="drawer-title">
+        <h3>Saved Favorites</h3>
+        <span id="wishlist-count-summary">(0 items)</span>
+      </div>
+      <button class="close-drawer-btn" id="close-wishlist-btn" aria-label="Close wishlist">&times;</button>
+    </div>
+    <div class="drawer-body" id="wishlist-items-container">
+      <!-- Injected via JS -->
+    </div>
+  </aside>
+
+  <!-- Quick View Product Modal -->
+  <div class="modal-overlay" id="quick-view-overlay">
+    <div class="quick-view-modal" id="quick-view-modal">
+      <button class="modal-close-btn" id="close-quick-view-btn">&times;</button>
+      <div class="quick-view-grid" id="quick-view-content">
+        <!-- Dynamically rendered via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Checkout Simulation Modal -->
+  <div class="modal-overlay" id="checkout-overlay">
+    <div class="checkout-modal" id="checkout-modal">
+      <button class="modal-close-btn" id="close-checkout-btn">&times;</button>
+      <div class="checkout-header">
+        <h3>Express Checkout</h3>
+        <p>Complete your order simulation below</p>
+      </div>
+      <form id="checkout-form" class="checkout-form">
+        <div class="form-section">
+          <h4>1. Contact & Shipping Address</h4>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="c-firstname">First Name</label>
+              <input type="text" id="c-firstname" required placeholder="Jane" />
+            </div>
+            <div class="form-group">
+              <label for="c-lastname">Last Name</label>
+              <input type="text" id="c-lastname" required placeholder="Doe" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="c-email">Email Address</label>
+            <input type="email" id="c-email" required placeholder="jane.doe@example.com" />
+          </div>
+          <div class="form-group">
+            <label for="c-address">Street Address</label>
+            <input type="text" id="c-address" required placeholder="123 Fifth Avenue, Suite 400" />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="c-city">City</label>
+              <input type="text" id="c-city" required placeholder="New York" />
+            </div>
+            <div class="form-group">
+              <label for="c-zip">ZIP Code</label>
+              <input type="text" id="c-zip" required placeholder="10001" />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h4>2. Payment Method</h4>
+          <div class="payment-options">
+            <label class="payment-card selected">
+              <input type="radio" name="payment" value="card" checked />
+              <span class="payment-title">Credit / Debit Card</span>
+              <span class="card-icons">💳 Visa / Mastercard / Amex</span>
+            </label>
+            <label class="payment-card">
+              <input type="radio" name="payment" value="apple" />
+              <span class="payment-title">Apple Pay</span>
+            </label>
+            <label class="payment-card">
+              <input type="radio" name="payment" value="paypal" />
+              <span class="payment-title">PayPal Express</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="checkout-order-summary">
+          <div class="summary-line">
+            <span>Total Amount Due:</span>
+            <strong id="checkout-final-total">$0.00</strong>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary btn-block">Place Simulated Order</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Review Modal -->
+  <div class="modal-overlay" id="review-overlay">
+    <div class="modal-card" id="review-modal">
+      <button class="modal-close-btn" id="close-review-btn">&times;</button>
+      <h3>Write a Verified Review</h3>
+      <p class="modal-subtitle">Share your experience with AURA Atelier</p>
+      <form id="write-review-form" class="review-form">
+        <div class="form-group">
+          <label for="r-name">Your Full Name</label>
+          <input type="text" id="r-name" required placeholder="e.g. Sarah Jenkins" />
+        </div>
+        <div class="form-group">
+          <label>Overall Rating</label>
+          <div class="star-rating-input" id="star-rating-input">
+            <span class="star-selectable" data-value="1">★</span>
+            <span class="star-selectable" data-value="2">★</span>
+            <span class="star-selectable" data-value="3">★</span>
+            <span class="star-selectable" data-value="4">★</span>
+            <span class="star-selectable" data-value="5" class="active">★</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="r-title">Review Headline</label>
+          <input type="text" id="r-title" required placeholder="e.g. Exceptional tailoring and soft cashmere" />
+        </div>
+        <div class="form-group">
+          <label for="r-comment">Review Details</label>
+          <textarea id="r-comment" rows="4" required placeholder="Describe the fit, material quality, packaging, and feel..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary btn-block">Submit Verified Review</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <div class="hero-slider" id="hero-slider">
+
+        <!-- Slide 1: Women / General Haute Couture -->
+        <div class="hero-slide active">
+          <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=2000&auto=format&fit=crop');"></div>
+          <div class="slide-overlay"></div>
+          <div class="container hero-container">
+            <div class="hero-content">
+              <span class="hero-eyebrow">Autumn / Winter '26 Collection</span>
+              <h1 class="hero-title">Timeless Luxury & Architectural Silhouettes</h1>
+              <p class="hero-description">Discover meticulously crafted outerwear, Italian wool tailored suits, and sustainably sourced cashmere designed for modern elegance.</p>
+              <div class="hero-cta-group">
+                <a href="#products" class="btn-primary hero-btn" onclick="filterCategory('women', 'all')">Explore Women's Collection</a>
+                <a href="#categories" class="btn-outline hero-btn">View Lookbook</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2: Men Contemporary Atelier -->
+        <div class="hero-slide">
+          <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=2000&auto=format&fit=crop');"></div>
+          <div class="slide-overlay"></div>
+          <div class="container hero-container">
+            <div class="hero-content">
+              <span class="hero-eyebrow">The Modern Gentleman</span>
+              <h1 class="hero-title">Refined Essentials & Fine Italian Leather</h1>
+              <p class="hero-description">Precision-cut blazers, Japanese selvedge denim, handcrafted chronographs, and organic cotton staples built to endure generations.</p>
+              <div class="hero-cta-group">
+                <a href="#products" class="btn-primary hero-btn" onclick="filterCategory('men', 'all')">Shop Men's Atelier</a>
+                <a href="#products" class="btn-outline hero-btn" onclick="filterCategory('men', 'accessories')">Men's Accessories</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3: Kids Junior Collection -->
+        <div class="hero-slide">
+          <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?q=80&w=2000&auto=format&fit=crop');"></div>
+          <div class="slide-overlay"></div>
+          <div class="container hero-container">
+            <div class="hero-content">
+              <span class="hero-eyebrow">AURA Junior Collection</span>
+              <h1 class="hero-title">Gentle Organic Cotton & Playful Aesthetics</h1>
+              <p class="hero-description">Durable, hypoallergenic apparel and playful accessories crafted specifically for young explorers and energetic playdays.</p>
+              <div class="hero-cta-group">
+                <a href="#products" class="btn-primary hero-btn" onclick="filterCategory('kids', 'all')">Discover Kids Collection</a>
+                <a href="#products" class="btn-outline hero-btn" onclick="filterCategory('kids', 'accessories')">Kids Accessories</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Slider Indicators & Controls -->
+      <div class="slider-controls container">
+        <button class="slider-arrow prev" id="hero-prev" aria-label="Previous slide">&larr;</button>
+        <div class="slider-dots" id="hero-dots">
+          <span class="dot active" data-index="0"></span>
+          <span class="dot" data-index="1"></span>
+          <span class="dot" data-index="2"></span>
+        </div>
+        <button class="slider-arrow next" id="hero-next" aria-label="Next slide">&rarr;</button>
+      </div>
+
+      <!-- Hero Features Bar -->
+      <div class="hero-highlights-bar">
+        <div class="container highlights-flex">
+          <div class="highlight-item">
+            <svg class="h-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="1" y="3" width="15" height="13"></rect>
+              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+              <circle cx="5.5" cy="18.5" r="2.5"></circle>
+              <circle cx="18.5" cy="18.5" r="2.5"></circle>
+            </svg>
+            <div>
+              <strong>Worldwide Express Delivery</strong>
+              <span>Free shipping on orders $150+</span>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <svg class="h-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+            <div>
+              <strong>100% Sustainable Artisanship</strong>
+              <span>GOTS certified organic fabrics</span>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <svg class="h-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="23 4 23 10 17 10"></polyline>
+              <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+            </svg>
+            <div>
+              <strong>30-Day Effortless Returns</strong>
+              <span>Pre-paid return label included</span>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <svg class="h-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+              <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+            <div>
+              <strong>Dedicated Concierge</strong>
+              <span>24/7 Styling advice & assistance</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORIES SECTION (Men, Women, Kids with Clothing & Accessories) -->
+    <section class="section categories-section" id="categories">
+      <div class="container">
+        <div class="section-header center">
+          <span class="sub-heading">Curated Collections</span>
+          <h2 class="section-title">Explore By Department</h2>
+          <p class="section-subtitle">Tailored apparel and master-crafted accessories for every member of the family.</p>
+        </div>
+
+        <!-- Gender Tab Controls -->
+        <div class="category-tabs-nav" id="category-gender-tabs">
+          <button class="cat-tab-btn active" data-gender="women">Women's Atelier</button>
+          <button class="cat-tab-btn" data-gender="men">Men's Collection</button>
+          <button class="cat-tab-btn" data-gender="kids">Kids & Junior</button>
+        </div>
+
+        <!-- WOMEN CATEGORIES CONTAINER -->
+        <div class="gender-category-content active" id="cat-content-women">
+          <div class="categories-grid">
+            <div class="category-card large-card" onclick="filterCategory('women', 'clothing')">
+              <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=800&auto=format&fit=crop" alt="Women Clothing" class="cat-bg-img" loading="lazy" />
+              <div class="cat-overlay"></div>
+              <div class="cat-info">
+                <span class="cat-tag">Women's Couture</span>
+                <h3>Clothing Collection</h3>
+                <p>Silk dresses, tailored trench coats, cashmere knits & trousers</p>
+                <span class="cat-link-btn">Shop Clothing &rarr;</span>
+              </div>
+            </div>
+
+            <div class="category-card" onclick="filterCategory('women', 'accessories')">
+              <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=800&auto=format&fit=crop" alt="Women Accessories" class="cat-bg-img" loading="lazy" />
+              <div class="cat-overlay"></div>
+              <div class="cat-info">
+                <span class="cat-tag">Luxury Accents</span>
+                <h3>Accessories & Bags</h3>
+                <p>Italian leather totes, gold-plated jewelry & silk scarves</p>
+                <span class="cat-link-btn">Shop Accessories &rarr;</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MEN CATEGORIES CONTAINER -->
+        <div class="gender-category-content" id="cat-content-men">
+          <div class="categories-grid">
+            <div class="category-card large-card" onclick="filterCategory('men', 'clothing')">
+              <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?q=80&w=800&auto=format&fit=crop" alt="Men Clothing" class="cat-bg-img" loading="lazy" />
+              <div class="cat-overlay"></div>
+              <div class="cat-info">
+                <span class="cat-tag">Men's Tailoring</span>
+                <h3>Clothing Collection</h3>
+                <p>Wool suits, Oxford shirts, leather jackets & raw denim</p>
+                <span class="cat-link-btn">Shop Clothing &rarr;</span>
+              </div>
+            </div>
+
+            <div class="category-card" onclick="filterCategory('men', 'accessories')">
+              <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=800&auto=format&fit=crop" alt="Men Accessories" class="cat-bg-img" loading="lazy" />
+              <div class="cat-overlay"></div>
+              <div class="cat-info">
+                <span class="cat-tag">Refined Accents</span>
+                <h3>Accessories & Watches</h3>
+                <p>Automatic timepieces, full-grain leather belts & sunglasses</p>
+                <span class="cat-link-btn">Shop Accessories &rarr;</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- KIDS CATEGORIES CONTAINER -->
+        <div class="gender-category-content" id="cat-content-kids">
+          <div class="categories-grid">
+            <div class="category-card large-card" onclick="filterCategory('kids', 'clothing')">
+              <img src="https://images.unsplash.com/photo-1503944583220-79d8926ad5e2?q=80&w=800&auto=format&fit=crop" alt="Kids Clothing" class="cat-bg-img" loading="lazy" />
+              <div class="cat-overlay"></div>
+              <div class="cat-info">
+                <span class="cat-tag">Organic Comfort</span>
+                <h3>Kids Clothing</h3>
+                <p>Cotton sets, cozy hoodies, durable denim & pajamas</p>
+                <span class="cat-link-btn">Shop Clothing &rarr;</span>
+              </div>
+            </div>
+
+            <div class="category-card" onclick="filterCategory('kids', 'accessories')">
+              <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=800&auto=format&fit=crop" alt="Kids Accessories" class="cat-bg-img" loading="lazy" />
+              <div class="cat-overlay"></div>
+              <div class="cat-info">
+                <span class="cat-tag">Fun & Durable</span>
+                <h3>Kids Accessories</h3>
+                <p>Backpacks, sun hats, canvas sneakers & knit beanies</p>
+                <span class="cat-link-btn">Shop Accessories &rarr;</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FEATURED PRODUCTS SECTION -->
+    <section class="section products-section" id="products">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="sub-heading">Signature Catalog</span>
+            <h2 class="section-title">Featured Products</h2>
+          </div>
+          <div class="products-filter-wrapper">
+            <!-- Filter Pills -->
+            <div class="filter-pills" id="product-filter-pills">
+              <button class="pill-btn active" data-filter="all">All Items</button>
+              <button class="pill-btn" data-filter="women">Women</button>
+              <button class="pill-btn" data-filter="men">Men</button>
+              <button class="pill-btn" data-filter="kids">Kids</button>
+              <button class="pill-btn" data-filter="clothing">Clothing</button>
+              <button class="pill-btn" data-filter="accessories">Accessories</button>
+              <button class="pill-btn" data-filter="bestseller">Best Sellers</button>
+            </div>
+
+            <!-- Sort dropdown -->
+            <div class="sort-wrapper">
+              <label for="sort-select" class="sort-label">Sort:</label>
+              <select id="sort-select" class="sort-select">
+                <option value="featured">Featured Order</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="rating">Top Rated</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamic Product Grid -->
+        <div class="products-grid" id="products-grid">
+          <!-- Dynamically populated via script.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- EDITORIAL / ABOUT SECTION -->
+    <section class="section about-section" id="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1000&auto=format&fit=crop" alt="AURA Craftsmanship Atelier" class="about-img main-img" loading="lazy" />
+            <div class="floating-badge">
+              <span class="badge-number">100%</span>
+              <span class="badge-label">Ethically Crafted in Italy & Japan</span>
+            </div>
+          </div>
+          <div class="about-content">
+            <span class="sub-heading">Behind The Brand</span>
+            <h2 class="section-title">Pure Design. Responsible Luxury.</h2>
+            <p class="about-text">Founded in 2021, AURA was created with a singular mandate: to dismantle fast fashion by crafting timeless wardrobe staples that balance architectural precision with sustainable material integrity.</p>
+            <p class="about-text">Every fiber of organic cotton, mulberry silk, and Mongolian cashmere is ethically sourced from certified transparent cooperatives. Our master artisans hand-finish each seam to ensure garments that age gracefully through years of wear.</p>
+
+            <div class="pillars-grid">
+              <div class="pillar-card">
+                <div class="pillar-icon">🌱</div>
+                <h4>Zero Synthetic Waste</h4>
+                <p>100% biodegradable packaging and organic GOTS certified textiles.</p>
+              </div>
+              <div class="pillar-card">
+                <div class="pillar-icon">✂️</div>
+                <h4>Master Tailoring</h4>
+                <p>Hand-cut structural seams ensuring unmatched comfort & drape.</p>
+              </div>
+              <div class="pillar-card">
+                <div class="pillar-icon">🤝</div>
+                <h4>Fair Wages & Ethics</h4>
+                <p>Direct partnership with artisan workshops paying 1.8x fair-living wage.</p>
+              </div>
+              <div class="pillar-card">
+                <div class="pillar-icon">🔁</div>
+                <h4>Circular Promise</h4>
+                <p>Send back worn garments anytime for a 20% store recycling credit.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CUSTOMER REVIEWS SECTION -->
+    <section class="section reviews-section" id="reviews">
+      <div class="container">
+        <div class="reviews-header-block">
+          <div>
+            <span class="sub-heading">Client Experiences</span>
+            <h2 class="section-title">Loved By Discerning Wearers</h2>
+          </div>
+          <div class="rating-overview">
+            <div class="overall-score">
+              <span class="score-num">4.9</span>
+              <div class="score-stars">★★★★★</div>
+              <span class="score-count">Based on 3,420+ verified reviews</span>
+            </div>
+            <button class="btn-outline" id="open-write-review-btn">+ Write a Review</button>
+          </div>
+        </div>
+
+        <div class="reviews-grid" id="reviews-grid">
+          <!-- Injected dynamically via script.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER & COMMUNITY SECTION -->
+    <section class="section newsletter-section" id="newsletter">
+      <div class="container">
+        <div class="newsletter-card">
+          <div class="newsletter-content">
+            <span class="sub-heading white-text">The AURA Circle</span>
+            <h2 class="section-title white-text">Join Our Private Circle</h2>
+            <p class="white-text-sub">Subscribe to receive early access to seasonal capsule drops, private trunk shows, and an instant <strong>15% OFF code</strong> for your first order.</p>
+
+            <form id="newsletter-form" class="newsletter-form">
+              <div class="input-group">
+                <input type="email" id="newsletter-email" required placeholder="Enter your email address (e.g. fashion@aura.com)" />
+                <button type="submit" class="btn-primary">Unlock 15% OFF</button>
+              </div>
+              <span class="newsletter-privacy">By subscribing you agree to our Privacy Policy. Unsubscribe anytime in 1-click.</span>
+            </form>
+            <div id="newsletter-success" class="newsletter-success-msg" style="display: none;">
+              🎉 Welcome to the AURA Circle! Check your inbox for your 15% discount code <strong>AURA15</strong>.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-col brand-col">
+        <a href="#" class="brand-logo footer-logo">
+          <span class="logo-text">AURA</span>
+          <span class="logo-sub">STUDIO</span>
+        </a>
+        <p class="footer-desc">Contemporary apparel & artisanal luxury accessories designed for longevity, sustainability, and effortless sophistication.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Instagram" class="social-btn">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+          <a href="#" aria-label="Pinterest" class="social-btn">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2C6.48 2 2 6.48 2 12c0 4.25 2.65 7.87 6.37 9.27-.09-.78-.17-1.98.04-2.83.19-.77 1.22-5.18 1.22-5.18s-.31-.63-.31-1.56c0-1.46.85-2.55 1.9-2.55.9 0 1.33.67 1.33 1.48 0 .9-.57 2.25-.87 3.5-.25 1.05.53 1.91 1.56 1.91 1.88 0 3.32-1.98 3.32-4.84 0-2.53-1.82-4.3-4.42-4.3-3.01 0-4.78 2.26-4.78 4.59 0 .91.35 1.88.79 2.41.09.11.1.2.07.31-.08.32-.26 1.06-.3 1.2-.05.21-.17.26-.39.16-1.44-.67-2.34-2.77-2.34-4.46 0-3.63 2.64-6.97 7.61-6.97 3.99 0 7.09 2.84 7.09 6.64 0 3.97-2.5 7.16-5.97 7.16-1.17 0-2.26-.61-2.64-1.32l-.72 2.74c-.26 1-.97 2.25-1.44 3.02C10.04 21.84 11 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z"></path>
+            </svg>
+          </a>
+          <a href="#" aria-label="X Twitter" class="social-btn">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+            </svg>
+          </a>
+          <a href="#" aria-label="YouTube" class="social-btn">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+              <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Departments</h4>
+        <ul>
+          <li><a href="#products" onclick="filterCategory('women', 'clothing')">Women's Apparel</a></li>
+          <li><a href="#products" onclick="filterCategory('women', 'accessories')">Women's Handbags</a></li>
+          <li><a href="#products" onclick="filterCategory('men', 'clothing')">Men's Tailoring</a></li>
+          <li><a href="#products" onclick="filterCategory('men', 'accessories')">Men's Timepieces</a></li>
+          <li><a href="#products" onclick="filterCategory('kids', 'clothing')">Kids' Wear</a></li>
+          <li><a href="#products" onclick="filterCategory('kids', 'accessories')">Kids' Accessories</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Client Care</h4>
+        <ul>
+          <li><a href="#hero">Track Order Status</a></li>
+          <li><a href="#hero">Shipping & Taxes</a></li>
+          <li><a href="#hero">Returns & Exchanges</a></li>
+          <li><a href="#about">Sustainability Guarantee</a></li>
+          <li><a href="#hero">Size Guide & Fit Advisor</a></li>
+          <li><a href="#newsletter">Contact Client Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Store Concierge</h4>
+        <p class="footer-contact-info"><strong>Flagship Atelier:</strong><br />580 Madison Avenue, New York, NY 10022</p>
+        <p class="footer-contact-info"><strong>Support Hours:</strong><br />Mon - Sun: 8:00 AM - 10:00 PM EST</p>
+        <p class="footer-contact-info"><strong>Email:</strong><br /><a href="mailto:concierge@aura.com">concierge@aura.com</a></p>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>&copy; 2026 AURA Studio Inc. All rights reserved. Masterfully crafted with zero dependencies.</p>
+      <div class="payment-badges">
+        <span class="p-badge">Visa</span>
+        <span class="p-badge">Mastercard</span>
+        <span class="p-badge">Amex</span>
+        <span class="p-badge">Apple Pay</span>
+        <span class="p-badge">PayPal</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

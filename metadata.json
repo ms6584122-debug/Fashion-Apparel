@@ -1,0 +1,6 @@
+{
+  "name": "AURA | Contemporary Fashion",
+  "description": "A modern, responsive fashion brand website featuring Men, Women, and Kids collections with interactive shopping cart, product modal, filterable gallery, reviews, and smooth animations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
